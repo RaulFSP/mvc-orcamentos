@@ -1,5 +1,7 @@
  @template.layout.base( headContent=@`
 <title>Home</title>
 `, bodyContent=@`
-<p>potato</p>
+<section class="row py-4">
+	<h1>Home</h1>
+</section>
 `)
