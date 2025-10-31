@@ -13,6 +13,10 @@ public class ClienteMapper {
 	}
 
 	public Cliente fromDto(ClienteDto dto) {
-		return Cliente.builder().id(dto.id()).name(dto.name()).build();
+		return Cliente.builder().id(dto.id()).name(dto.name()).active(dto.active()).build();
+	}
+
+	public Cliente updateFromDto(ClienteDto dto, Long id) {
+		return Cliente.builder().id(id).name(dto.name()).active(dto.active()).build();
 	}
 }
