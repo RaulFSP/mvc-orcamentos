@@ -58,6 +58,6 @@ public class ClienteService {
 	public void clienteUpdate(Long id, ClienteDto dto) {
 		var cliente = clienteRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("cliente não encontrado"));
 		cliente = clienteMapper.updateFromDto(dto,id);
-		
+		clienteRepository.save(cliente);
 	}
 }

@@ -72,10 +72,11 @@ public class ClienteController {
 		return "redirect:/clientes/new";
 	}
 
-	@PutMapping(value = "/update/{id}")
+	@PutMapping(value = "/{id}")
 	public String clienteUpdate(@PathVariable("id") Long id, @Valid @ModelAttribute("cliente") ClienteDto cliente,
-			RedirectAttributes ra, BindingResult result, Model model) {
+			BindingResult result,RedirectAttributes ra,  Model model) {
 		if (result.hasErrors()) {
+			System.out.println("nao ocorreu");
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("result", result);
 			model.addAttribute("isEdit", true);
@@ -83,8 +84,7 @@ public class ClienteController {
 			return "pages/clientes-form-page";
 		}
 		clienteService.clienteUpdate(id, cliente);
-		ra.addFlashAttribute("formFeedback",
-				Map.of("alert", "success", "msg", cliente.name() + " foi atualizado com sucesso"));
+		System.out.println("ocorreu");
 		return "redirect:/clientes/"+cliente.id();
 	}
 
