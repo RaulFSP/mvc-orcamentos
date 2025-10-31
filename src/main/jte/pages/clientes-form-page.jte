@@ -38,6 +38,7 @@
 <form action="${isEdit ? "/clientes/" + cliente.id() : "/clientes/create"}" method="post">
 @if(isEdit)
 	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="active" value="${cliente.active() != null ? cliente.active().toString() : "false"}">
 @endif
 	
 
@@ -48,7 +49,7 @@
 				class="form-control ${result != null && result.hasFieldErrors("name") ? "	is-invalid" : ""}"
 				id="clienteNome"
 				placeholder="nome do cliente"
-				value="${cliente.name() != null ? cliente.name() : ""}" > 
+				value="${cliente.name() != null  ? cliente.name() : ""}" > 
 				@if(result != null && result.hasFieldErrors("name"))
 					<div class="invalid-feedback">
                 		${result.getFieldError("name").getDefaultMessage()}
