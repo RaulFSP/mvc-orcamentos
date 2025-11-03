@@ -30,7 +30,7 @@ public class ClienteController {
 
 	@GetMapping
 	public String clienteHome(Model model) {
-		var clientes = clienteService.findAll();
+		var clientes = clienteService.findAllActive();
 		model.addAttribute("clientes", clientes);
 		return "pages/clientes-page";
 	}
@@ -76,7 +76,6 @@ public class ClienteController {
 	public String clienteUpdate(@PathVariable("id") Long id, @Valid @ModelAttribute("cliente") ClienteDto cliente,
 			BindingResult result,RedirectAttributes ra,  Model model) {
 		if (result.hasErrors()) {
-			System.out.println("nao ocorreu");
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("result", result);
 			model.addAttribute("isEdit", true);
@@ -84,7 +83,6 @@ public class ClienteController {
 			return "pages/clientes-form-page";
 		}
 		clienteService.clienteUpdate(id, cliente);
-		System.out.println("ocorreu");
 		return "redirect:/clientes/"+cliente.id();
 	}
 
