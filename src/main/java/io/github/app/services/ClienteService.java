@@ -27,7 +27,7 @@ public class ClienteService {
 		this.clienteRepository = clienteRepository;
 	}
 
-	public List<ClienteDto> findAll() {
+	public List<ClienteDto> findAllActive() {
 		return clienteRepository.findAllByActiveTrue().parallelStream()
 				.map(m -> clienteMapper.toDto(m)).toList();
 	}
