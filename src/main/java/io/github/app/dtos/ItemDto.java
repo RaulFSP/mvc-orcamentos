@@ -7,9 +7,9 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 public record ItemDto(
 		Long id,
-		@NotBlank String name,
-		@PositiveOrZero BigDecimal preco,
-		Boolean active,
-		Long version) {
+		@NotBlank(message = "o nome do item não pode estar vazio") String name,
+		@PositiveOrZero(message = "o valor não pode ser negativo") BigDecimal preco,
+		Boolean active
+		) {
 
 }

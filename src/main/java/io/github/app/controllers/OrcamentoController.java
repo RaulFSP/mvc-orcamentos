@@ -18,7 +18,7 @@ public class OrcamentoController {
 	@GetMapping(value = "/new")
 	public String orcamentoNew(Model model) {
 		model.addAttribute("isUpdate", false);
-		model.addAttribute("orcamento", new OrcamentoDto(null, null, null,null,null,null,null));
+		model.addAttribute("orcamento", new OrcamentoDto(null,null,null,null,null));
 		return "pages/orcamentos-form-page";
 	}
 }

@@ -32,7 +32,7 @@ public class Cliente {
 	@Column(nullable = false)
 	private Boolean active;
 	@Version
-	@Column(updatable = false, nullable = false )
+	@Column(nullable = false )
 	private Long version;
 
 	@CreationTimestamp

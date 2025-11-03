@@ -13,21 +13,22 @@ public class ItemMapper {
 				.id(dto.id())
 				.name(dto.name())
 				.preco(dto.preco())
-				.active(dto.active())
+				.active(dto.active() == null ? true : false)
 				
 				.build();
 	}
 	
 	public ItemDto toDto(Item item) {
-		return new ItemDto(item.getId(), item.getName(), item.getPreco(),item.getActive(),item.getVersion());
+		return new ItemDto(item.getId(), item.getName(), item.getPreco(),item.getActive());
 	}
 	
-	public Item updateFromDto(ItemDto dto, Long id) {
+	public Item updateFromDto(Item item,ItemDto dto) {
 		return Item.builder()
-				.id(id)
-				.name(dto.name())
+				.id(item.getId())
+				.active(item.getActive())
+				.version(item.getVersion())
+				.name(!dto.name().equals(item.getName()) ? dto.name() : item.getName())
 				.preco(dto.preco())
-				.active(dto.active())
 				.build();
 	}
 }
