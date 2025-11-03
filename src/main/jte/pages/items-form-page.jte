@@ -39,9 +39,6 @@
 <form action="${isUpdate ? "/items/" + item.id() : "/items/create"}" method="post">
 @if(isUpdate)
 	<input type="hidden" name="_method" value="put">
-	<input type="hidden" name="id" value="${item.id() != null ? item.id().toString() : ""}">
-	<input type="hidden" name="active" value="${item.active() != null ? item.active().toString() : "false"}">
-	<input type="hidden" name="version" value="${item.version() != null ? item.version().toString() : ""}">
 @endif
 	
 

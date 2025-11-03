@@ -54,10 +54,11 @@ public class ClienteService {
 		}
 	}
 	
-	@Transactional
+	
 	public void clienteUpdate(Long id, ClienteDto dto) {
 		var cliente = clienteRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("cliente não encontrado"));
-		cliente = clienteMapper.updateFromDto(dto,id);
+		cliente = clienteMapper.updateFromDto(dto,cliente);
 		clienteRepository.save(cliente);
+		System.out.println(cliente.toString());
 	}
 }

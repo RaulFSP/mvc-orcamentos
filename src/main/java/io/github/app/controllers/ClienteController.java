@@ -37,7 +37,7 @@ public class ClienteController {
 
 	@GetMapping(value = "/new")
 	public String clientesNew(Model model) {
-		model.addAttribute("isEdit", false);
+		model.addAttribute("isUpdate", false);
 		model.addAttribute("cliente", new ClienteDto(null, null, null));
 		return "pages/clientes-form-page";
 	}
@@ -52,7 +52,7 @@ public class ClienteController {
 	public String clienteEdit(@PathVariable("id") Long id, Model model) {
 		var dto = clienteService.findById(id);
 		model.addAttribute("cliente", dto);
-		model.addAttribute("isEdit", true);
+		model.addAttribute("isUpdate", true);
 		return "pages/clientes-form-page";
 	}
 
@@ -62,7 +62,7 @@ public class ClienteController {
 		if (result.hasErrors()) {
 			model.addAttribute("cliente", dto);
 			model.addAttribute("result", result);
-			model.addAttribute("isEdit", false);
+			model.addAttribute("isUpdate", false);
 			model.addAttribute("formFeedback", Map.of("alert", "danger", "msg", "há erros no formulário de cadastro"));
 			return "pages/clientes-form-page";
 		}
@@ -76,12 +76,14 @@ public class ClienteController {
 	public String clienteUpdate(@PathVariable("id") Long id, @Valid @ModelAttribute("cliente") ClienteDto cliente,
 			BindingResult result,RedirectAttributes ra,  Model model) {
 		if (result.hasErrors()) {
+			System.out.println("nao");
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("result", result);
-			model.addAttribute("isEdit", true);
+			model.addAttribute("isUpdate", true);
 			model.addAttribute("formFeedback", Map.of("alert", "danger", "msg", "há erros no formulário de atualização"));
 			return "pages/clientes-form-page";
 		}
+		System.out.println("sim");
 		clienteService.clienteUpdate(id, cliente);
 		return "redirect:/clientes/"+cliente.id();
 	}

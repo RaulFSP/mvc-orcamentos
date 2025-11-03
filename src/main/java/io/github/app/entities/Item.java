@@ -37,7 +37,7 @@ public class Item {
 		this.name = builder.name;
 		this.preco = builder.preco;
 		this.active = builder.active;
-		
+		this.version = builder.version;
 	}
 
 	public Long getId() {
@@ -106,11 +106,15 @@ public class Item {
 		private String name;
 		private BigDecimal preco;
 		private Boolean active;
+		private Long version;
 		public Builder id(Long id) {
 			this.id = id;
 			return this;
 		}
-		
+		public Builder version(Long version) {
+			this.version = version;
+			return this;
+		}
 		public Builder active(Boolean active) {
 			this.active = active;
 			return this;

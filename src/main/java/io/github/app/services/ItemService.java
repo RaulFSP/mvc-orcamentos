@@ -44,10 +44,10 @@ public class ItemService {
 		}
 	}
 
-	@Transactional
+	
 	public void itemUpdate(Long id, @Valid ItemDto dto) {
 		var item = itemRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("item não encontrado"));
-		item = itemMapper.updateFromDto(dto,id);
+		item = itemMapper.updateFromDto(item,dto);
 		itemRepository.save(item);
 	}
 }

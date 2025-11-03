@@ -36,7 +36,7 @@ public class ItemController {
 
 	@GetMapping(value = "/new")
 	public String itemNew(Model model) {
-		model.addAttribute("item", new ItemDto(null, null, null, false, null));
+		model.addAttribute("item", new ItemDto(null, null, null, null));
 		model.addAttribute("isUpdate", false);
 		return "pages/items-form-page";
 	}

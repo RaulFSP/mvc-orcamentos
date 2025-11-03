@@ -10,14 +10,14 @@
 <!--  -->
 @param Map<String,String> formFeedback
 <!--  -->
-@param Boolean isEdit
+@param Boolean isUpdate
 <!--  -->
 @template.layout.base( headContent=@`
-<title>${isEdit ? "Editar Cliente" : "Novo Cliente"}</title>
+<title>${isUpdate ? "Editar Cliente" : "Novo Cliente"}</title>
 `, bodyContent=@`
 
 <section class="row my-4">
-<h1>${isEdit ? "Editar Cliente" : "Novo Cliente"}</h1>
+<h1>${isUpdate ? "Editar Cliente" : "Novo Cliente"}</h1>
 <hr>
 <div class="col-sm-12 col-md-4">
 		<a class="btn btn-secondary w-100" href="/clientes">Voltar</a>
@@ -35,10 +35,9 @@
 @endif
 
 
-<form action="${isEdit ? "/clientes/" + cliente.id() : "/clientes/create"}" method="post">
-@if(isEdit)
+<form action="${isUpdate ? "/clientes/" + cliente.id() : "/clientes/create"}" method="post">
+@if(isUpdate)
 	<input type="hidden" name="_method" value="put">
-	<input type="hidden" name="active" value="${cliente.active() != null ? cliente.active().toString() : "false"}">
 @endif
 	
 
@@ -58,7 +57,7 @@
 		</div>
 		<div class="row g-3">
 		<div class="col-sm-12 col-md-6">
-		<button type="submit" class="btn btn-primary w-100">${isEdit ? "Alterar" : "Criar"}</button>
+		<button type="submit" class="btn btn-primary w-100">${isUpdate ? "Alterar" : "Criar"}</button>
 		</div>
 		<div class="col-sm-12 col-md-6">
 		<button type="reset" class="btn btn-warning w-100">Limpar</button>

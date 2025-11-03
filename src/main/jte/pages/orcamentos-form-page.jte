@@ -1,4 +1,4 @@
-@import io.github.app.dtos.ItemDto
+@import io.github.app.dtos.OrcamentoDto
 <!--  -->
 @import org.springframework.validation.BindingResult
 <!--  -->
@@ -6,7 +6,7 @@
 <!--  -->
 @param BindingResult result
 <!--  -->
-@param ItemDto item
+@param OrcamentoDto orcamento
 <!--  -->
 @param Map<String,String> formFeedback
 <!--  -->
@@ -37,11 +37,15 @@
 <form action="${isUpdate ? "/orcamentos/" + orcamento.id() : "/orcamentos/create"}" method="post">
 @if(isUpdate)
 	<input type="hidden" name="_method" value="put">
-	<input type="hidden" name="id" value="${orcamento.id() != null ? orcamento.id().toString() : ""}">
-	<input type="hidden" name="version" value="${orcamento.version() != null ? orcamento.version().toString() : ""}">
 @endif
 	
 
+	<select class="form-select" >
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
 	
 		
 		

@@ -9,11 +9,10 @@ import io.github.app.entities.Orcamento.Situacao;
 
 public record OrcamentoDto(
 		Long id,
-		LocalDateTime dateCreated,
 		Long idCliente,
 		Situacao situacao,
 		Set<ItemOrcamento> items,
-		BigDecimal precoTotal,
-		Long version) {
+		BigDecimal precoTotal
+		) {
 
 }
