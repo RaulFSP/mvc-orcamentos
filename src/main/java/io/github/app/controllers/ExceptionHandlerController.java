@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import jakarta.persistence.EntityNotFoundException;
 
 @ControllerAdvice
-public class ErrosAdviceController {
+public class ExceptionHandlerController {
 
 	@ExceptionHandler(EntityNotFoundException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)

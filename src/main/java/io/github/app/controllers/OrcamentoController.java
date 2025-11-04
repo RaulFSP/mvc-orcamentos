@@ -9,15 +9,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.app.dtos.ClienteDto;
 import io.github.app.dtos.OrcamentoDto;
+import io.github.app.entities.Orcamento.Situacao;
 import io.github.app.repositories.DtoSpecificRepository;
 import io.github.app.services.ClienteService;
 import io.github.app.services.OrcamentoService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @Controller
@@ -52,6 +56,18 @@ public class OrcamentoController {
 		model.addAttribute("dtos", dtos);
 		return "pages/orcamentos-page";
 	}
+	@GetMapping(value="/{situacao}")
+	public String orcamentoBySituacao(@PathVariable Situacao situacao,
+			Model model) {
+		
+		
+		
+		var dtos = dtoSpecificRepository.orcamentosComCliente(situacao);
+		model.addAttribute("dtos", dtos);
+		return "pages/orcamentos-page";
+	}
+	
+	
 	@GetMapping(value = "/new")
 	public String orcamentoNew(Model model) {
 

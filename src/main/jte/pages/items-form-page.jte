@@ -12,7 +12,9 @@
 <!--  -->
 @param Boolean isUpdate
 <!--  -->
-@template.layout.base( headContent=@`
+@param String requestURI
+<!--  -->
+@template.layout.base(requestURI=requestURI, headContent=@`
 <title>${isUpdate ? "Editar Item" : "Novo Item"}</title>
 `, bodyContent=@`
 

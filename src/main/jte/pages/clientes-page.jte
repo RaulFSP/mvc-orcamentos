@@ -4,7 +4,9 @@
  <!--  -->
  @param List<ClienteDto> clientes 
 <!--  -->
- @template.layout.base( headContent=@`
+@param String requestURI
+<!--  -->
+ @template.layout.base(requestURI=requestURI, headContent=@`
 <title>Clientes</title>
 `, bodyContent=@`
 

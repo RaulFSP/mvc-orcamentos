@@ -213,6 +213,14 @@ public class Orcamento {
 		}
 	}
 	public enum Situacao {
-		ABERTO, CANCELADO, APROVADO
+		ABERTO("aberto"), CANCELADO("cancelado"), APROVADO("aprovado");
+		private String situacao;
+		private Situacao(String situacao) {
+			this.situacao = situacao;
+		}
+		public String getSituacao() {
+			return situacao;
+		}
+		
 	}
 }
