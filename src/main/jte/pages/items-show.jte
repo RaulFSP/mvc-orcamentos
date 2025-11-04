@@ -6,7 +6,9 @@
 <!--  -->
 @param ItemDto item 
 <!--  -->
-@template.layout.base(headContent=@`
+@param String requestURI
+<!--  -->
+@template.layout.base(requestURI=requestURI,headContent=@`
 <title>Detalhes do Item</title>
 `, 
 bodyContent=@`

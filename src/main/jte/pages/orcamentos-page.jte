@@ -4,7 +4,9 @@
 <!--  -->
 @param List<OrcamentosComClienteDto> dtos
 <!--  -->
-@template.layout.base( headContent=@`
+@param String requestURI
+<!--  -->
+@template.layout.base(requestURI=requestURI, headContent=@`
 <title>Orcamentos</title>
 `, bodyContent=@`
 <section class="row my-4">
@@ -15,13 +17,14 @@
 			Orcamento</a>
 	</div>
 </section>
-<table class="table table-hover">
+<table class="table table-hover table-bordered">
 	<thead>
 		<tr>
 			<td>Numero</td>
 			<td>Cliente</td>
 			<td>Data</td>
 			<td>Preço Total</td>
+			<td colspan="2">Ações</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -31,6 +34,8 @@
 		<td>${dto.clienteNome().toString()}</td>
 		<td>${dto.dataCriado().toString()}</td>
 		<td>${dto.precoTotal().toString()}</td>
+		<td><i class="bi bi-book"></i>Mostrar</td>
+		<td>Adicionar item</td>
 	</tr>
 	@endfor
 	</tbody>
