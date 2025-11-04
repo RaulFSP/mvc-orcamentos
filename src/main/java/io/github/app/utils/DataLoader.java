@@ -39,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
 	@Override
 	
 	public void run(String... args) throws Exception {
-		
+		initDb();
 	}
 	private void initDb() {
 		Cliente cliente = Cliente.builder()
@@ -74,12 +74,7 @@ public class DataLoader implements CommandLineRunner {
         orcamento.setPrecoTotal(itemOrcamento.getPreco().multiply(BigDecimal.valueOf(itemOrcamento.getQuantidade())));
         orcamentoRepository.save(orcamento);
         
-        orcamento = orcamentoRepository.findByIdWithItems(1L).orElseThrow();
-        System.out.println(orcamento.getItems().size());
-        
-        orcamento.getItems().clear();
-        System.out.println(orcamento.getItems().size());
-        orcamentoRepository.save(orcamento);
+      
 	}
 
 

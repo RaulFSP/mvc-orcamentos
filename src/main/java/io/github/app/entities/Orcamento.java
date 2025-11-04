@@ -70,7 +70,8 @@ public class Orcamento {
 		this.precoTotal = builder.precoTotal != null
 				? builder.precoTotal
 				: BigDecimal.ZERO;
-		
+		this.version = builder.version;
+		this.idCliente = builder.idCliente;
 	}
 
 
@@ -156,18 +157,26 @@ public class Orcamento {
 
 	public static class Builder {
 		private Long id;
-		
+		private Long idCliente;
+		private Long version;
 		private Set<ItemOrcamento> items;
 		private Situacao situacao;
 		private BigDecimal precoTotal;
 		
 		
 
+		public Builder version(Long version) {
+			this.version = version;
+			return this;
+		}
 		public Builder id(Long id) {
 			this.id = id;
 			return this;
 		}
-		
+		public Builder idCliente(Long idCliente) {
+			this.idCliente = idCliente;
+			return this;
+		}
 		public Builder situacao(Situacao situacao) {
 			this.situacao = situacao;
 			return this;
