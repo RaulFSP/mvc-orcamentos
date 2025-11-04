@@ -1,8 +1,12 @@
 @import io.github.app.dtos.OrcamentoDto
 <!--  -->
+@import io.github.app.dtos.ClienteDto
+<!--  -->
 @import org.springframework.validation.BindingResult
 <!--  -->
 @import java.util.Map
+<!--  -->
+@import java.util.List
 <!--  -->
 @param BindingResult result
 <!--  -->
@@ -11,6 +15,8 @@
 @param Map<String,String> formFeedback
 <!--  -->
 @param Boolean isUpdate
+<!--  -->
+@param List<ClienteDto> clientes
 <!--  -->
 @template.layout.base( headContent=@`
 <title>${isUpdate ? "Editar Item" : "Novo Item"}</title>
@@ -39,14 +45,21 @@
 	<input type="hidden" name="_method" value="put">
 @endif
 	
+<div class="mb-3">
+	<select class="form-select ${result != null && result.hasFieldErrors("idCliente") ? "	is-invalid" : ""}"  name="idCliente" >
 
-	<select class="form-select" >
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-	
+		<option value="">Selecione um cliente</option>
+		@for(var cliente : clientes)
+		  <option value="${cliente.id()}">${cliente.name()}</option>
+  		@endfor
+	</select>
+		
+		@if(result != null && result.hasFieldErrors("idCliente"))
+					<div class="invalid-feedback">
+                		${result.getFieldError("idCliente").getDefaultMessage()}
+           		 </div>
+			@endif
+	</div>
 		
 		
 		

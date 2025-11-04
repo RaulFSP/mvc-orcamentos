@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary py-4 fs-4 bg-dark"
 	data-bs-theme="dark">
-	<div class="container-fluid">
+	<div class="container container-fluid">
 		<a class="navbar-brand" href="/">MVC/Orçamento</a>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
