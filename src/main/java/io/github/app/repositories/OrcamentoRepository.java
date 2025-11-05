@@ -15,5 +15,8 @@ public interface OrcamentoRepository extends JpaRepository<Orcamento, Long> {
 	@Query("select o from Orcamento o left join fetch o.items where o.id = :id")
 	Optional<Orcamento> findByIdWithItems(@Param("id")  Long id);
 	
+	@Query("select o from Orcamento o left join fetch o.items")
+	List<Orcamento> findAllWithItems();
+	
 	List<Orcamento> findBySituacao(Situacao situacao);
 }

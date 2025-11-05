@@ -132,7 +132,24 @@ public class Orcamento {
 		this.precoTotal = precoTotal;
 	}
 
+	public void calcPrecoTotal() {
+		if(this.getItems().isEmpty()) {
+			return;
+		}
+		var precoTotal = this.getItems().parallelStream().map(item->item.getPreco().multiply(BigDecimal.valueOf(item.getQuantidade()))).reduce(BigDecimal.ZERO,BigDecimal::add);
+		
+		this.precoTotal = precoTotal;
+	}
+
 	
+	
+	@Override
+	public String toString() {
+		return "Orcamento [id=" + id + ", dateCreated=" + dateCreated
+				+ ", version=" + version + ", idCliente=" + idCliente
+				+ ", situacao=" + situacao + ", items=" + items
+				+ ", precoTotal=" + precoTotal + "]";
+	}
 
 	@Override
 	public int hashCode() {
