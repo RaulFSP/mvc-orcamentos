@@ -33,9 +33,9 @@
 		<td>${dto.idOrcamento().toString()}</td>
 		<td>${dto.clienteNome().toString()}</td>
 		<td>${dto.dataCriado().toString()}</td>
-		<td>${dto.precoTotal().toString()}</td>
-		<td><i class="bi bi-book"></i>Mostrar</td>
-		<td>Adicionar item</td>
+		<td >${dto.precoTotal().toString()}</td>
+		<td><i class="bi bi-file-text-fill"></i>Mostrar</td>
+		<td><i class="bi bi-bag-plus-fill"></i><a href="/">Adicionar item</a> </td>
 	</tr>
 	@endfor
 	</tbody>
